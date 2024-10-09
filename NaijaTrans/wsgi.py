@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 import os
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'NaijaTrans.settings')
-
+django.setup()
 
 from django.core.wsgi import get_wsgi_application
 
