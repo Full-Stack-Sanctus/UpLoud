@@ -1,6 +1,6 @@
-import dj_database_url
+import corsheaders
 from decouple import config
-import django_cors_headers
+import dj_database_url
 """
 Django settings for NaijaTrans project.
 
