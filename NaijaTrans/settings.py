@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'NaijaTrans.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-}
+
 
 
 # Password validation
@@ -130,35 +130,8 @@ REST_FRAMEWORK = {
     ),
 }
 
-,
-        'USER': {user},
-        'PASSWORD': {Password},
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-',
-        'USER': '{user}',
-        'PASSWORD': '{Password}',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-',
-        'USER': '{user}',
-        'PASSWORD': '{Password}',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}}
 
 
-}
-
-
-}
 
 DATABASES = {
     'default': {
