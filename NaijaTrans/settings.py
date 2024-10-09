@@ -1,3 +1,6 @@
+import dj_database_url
+from decouple import config
+import django_cors_headers
 """
 Django settings for NaijaTrans project.
 
@@ -130,16 +133,8 @@ REST_FRAMEWORK = {
     ),
 }
 
-
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'empire',
-        'USER': 'pythonia',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': 8080,
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
