@@ -1,3 +1,5 @@
+from rest_framework_simplejwt.authentication import JWTAuthentication  
+import rest_framework_simplejwt
 import corsheaders
 from decouple import config
 import dj_database_url
