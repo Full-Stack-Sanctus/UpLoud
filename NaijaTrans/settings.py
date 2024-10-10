@@ -154,4 +154,4 @@ DATABASES = {
     )
 }
 
-ALLOWED_HOSTS = ['https://empire-djangob.onrender.com']
+ALLOWED_HOSTS = ['https://empire-djangob.onrender.com', 'empire-djangob.onrender.com']
