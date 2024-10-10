@@ -14,7 +14,7 @@ dist/
 *.whl
 
 # Log files
-*.log
+#*.log
 
 # Environment variables
 .env
