@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-q&3j9a4q6%!u-*!3ursgx-q$qax)2eu*om-+92@svm13*#x*6s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['7d06-34-75-58-246.ngrok-free.app']
+
 
 
 # Application definition
@@ -153,3 +153,5 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+
+ALLOWED_HOSTS = ['https://empire-djangob.onrender.com']
