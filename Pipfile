@@ -13,6 +13,8 @@ rest-framework-simplejwt = "*"
 djangorestframework-simplejwt = "*"
 psycopg2 = "*"
 gunicorn = "*"
+django-rest-auth = "*"
+django-allauth = "*"
 
 [dev-packages]
 

@@ -1,6 +1,9 @@
-from rest_framework_simplejwt.authentication import JWTAuthentication  
-import rest_framework_simplejwt
-import corsheaders
+#import django 
+#django.setup() 
+
+#from rest_framework_simplejwt.authentication import JWTAuthentication  
+#import rest_framework_simplejwt
+#import corsheaders
 from decouple import config
 import dj_database_url
 """
@@ -30,22 +33,31 @@ SECRET_KEY = 'django-insecure-q&3j9a4q6%!u-*!3ursgx-q$qax)2eu*om-+92@svm13*#x*6s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['7d06-34-75-58-246.ngrok-free.app']
+#ALLOWED_HOSTS = ['7d06-34-75-58-246.ngrok-free.app']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'naijatrans',
-    'rest_framework_simplejwt',
-    'rest_framework',
-    'corsheaders',
+    'django.contrib.contenttypes',
+     
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+   
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd party apps
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+
+    # My app
+    'naijatrans',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'NaijaTrans.urls'
