@@ -15,6 +15,7 @@ psycopg2 = "*"
 gunicorn = "*"
 django-rest-auth = "*"
 django-allauth = "*"
+uvicorn = "*"
 
 [dev-packages]
 
