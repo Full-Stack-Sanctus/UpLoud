@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class UserLogin(models.Model):
     email = models.EmailField(unique=True)
