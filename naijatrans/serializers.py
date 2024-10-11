@@ -27,6 +27,9 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 # Serializer for login
 
+
+
+
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
@@ -35,17 +38,11 @@ class LoginSerializer(serializers.Serializer):
         email = data.get('email')
         password = data.get('password')
 
-        # Retrieve the user by email
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            raise serializers.ValidationError("Invalid email or password.")
+        # Use 'username=email' to allow authenticate to check the custom backend
+        user = authenticate(username=email, password=password)  
         
-        # Authenticate the user using the username and password
-        user = authenticate(username=user.username, password=password)
         if user is None:
             raise serializers.ValidationError("Invalid email or password.")
         
         return user
-
-
+        

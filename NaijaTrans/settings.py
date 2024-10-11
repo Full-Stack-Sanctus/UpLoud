@@ -112,3 +112,9 @@ DATABASES = {
 
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/auth/profile/'
+
+
+AUTHENTICATION_BACKENDS = [
+    'naijatrans.EmailAuth.EmailAuthBackend',  # Custom email backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
