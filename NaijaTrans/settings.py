@@ -39,7 +39,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    'myapp',
+    
     'django.contrib.contenttypes',
      
     'django.contrib.admin',
