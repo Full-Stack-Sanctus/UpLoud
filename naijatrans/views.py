@@ -30,6 +30,9 @@ def register(request):
 
 @api_view(['POST'])
 def login(request):
+    
+    print("Incoming data:", request.data)  # Debugging line
+   
     serializer = LoginSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.validated_data
