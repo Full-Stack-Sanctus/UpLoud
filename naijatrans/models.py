@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class UserLogin(models.Model):
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=15)
+    password = models.CharField(max_length=128)
 
 class Vehicle(models.Model):
     vehicle_number = models.CharField(max_length=10)
