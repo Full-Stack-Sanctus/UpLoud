@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include  # Include allows linking to app-level urls.py
 
-from .models import UserLogin  # or your custom user model name
+from naijatrans.models import UserLogin  # or your custom user model name
 
 urlpatterns = [
     path('admin/', admin.site.urls),
