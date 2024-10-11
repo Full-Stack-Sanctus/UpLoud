@@ -41,7 +41,7 @@ def login(request):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         })
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    print(serializer.errors)
 
 @api_view(['GET'])
 def profile(request):
