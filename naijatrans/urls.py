@@ -1,12 +1,10 @@
 from django.urls import path
-from .views import register, login, profile
+from . import views
 
 urlpatterns = [
-
-    path('api/auth/check/', check_authentication_anonymous, name='check-authentication'),
-
-
-    path('api/register/', register),
-    path('api/login/', login),
-    path('api/profile/', profile),
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('profile/', views.profile, name='profile'),
+    path('check-auth/', views.check_authentication, name='check_auth'),
 ]
+

@@ -39,6 +39,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'myapp',
     'django.contrib.contenttypes',
      
     'django.contrib.admin',
@@ -148,10 +149,12 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+
+ALLOWED_HOSTS = ['https://empire-djangob.onrender.com', 'empire-djangob.onrender.com']
+
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 }
-
-ALLOWED_HOSTS = ['https://empire-djangob.onrender.com', 'empire-djangob.onrender.com']
