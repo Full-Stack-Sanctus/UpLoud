@@ -104,11 +104,19 @@ REST_FRAMEWORK = {
     ),
 }
 ALLOWED_HOSTS = ['https://empire-djangob.onrender.com', 'empire-djangob.onrender.com']
+
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # or 'django.db.backends.sqlite3', etc.
+        'NAME': config('DB_NAME'),  # Specify your database name
+        'USER': config('DB_USER'),  # Specify your database user
+        'PASSWORD': config('DB_PASSWORD'),  # Specify your database password
+        'HOST': config('DB_HOST', default='localhost'),  # Specify your database host
+        'PORT': config('DB_PORT', default='5432'),  # Specify your database port
+    }
 }
+
 
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/auth/profile/'
