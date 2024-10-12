@@ -17,7 +17,7 @@ class Vehicle(models.Model):
     current_speed = models.FloatField()  # To track overspeeding
 
 class Ticket(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     date_of_journey = models.DateField()
     seat_number = models.IntegerField()
