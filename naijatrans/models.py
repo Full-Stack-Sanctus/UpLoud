@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.conf import settings
 
 
-class UserLogin(AbstractBaseUser):  # Inherit from AbstractUser
+class UserLogin(AbstractBaseUser, PermissionsMixin):  # Inherit from AbstractUser
     email = models.EmailField(unique=True)  # Ensure email is unique
     password = models.CharField(max_length=128)
     
