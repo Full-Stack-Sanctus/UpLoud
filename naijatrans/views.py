@@ -34,6 +34,9 @@ def register(request):
 def login(request):
     # Authenticate the user
     
+    serializer = LoginSerializer(data=request.data)  # Define the serializer here
+    
+    
     print("Incoming data:", request.data)  # Debugging line
   
    
