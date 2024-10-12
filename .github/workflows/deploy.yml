@@ -28,15 +28,18 @@ jobs:
           python manage.py makemigrations --noinput
           python manage.py migrate --noinput
 
+
       - name: Deploy to Render
         run: |
           curl -X POST \
-          -H "Authorization: Bearer ${{ secrets.EMPIRE_RENDER_API }}" \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
           -H "Content-Type: application/json" \
           -d '{
-            "serviceId": "YOUR_SERVICE_ID",
+            "serviceId": "${{ secrets.RENDER_SERVICE_ID }}",
             "env": {
-              "DATABASE_URL": "${{ secrets.EMPIRE_RENDER_DB_URL }}"
+            "DATABASE_URL": "${{ secrets.DATABASE_URL }}"
             }
           }' \
-          https://api.render.com/v1/services/srv-cs33nvt6l47c73e925s0/deploys
+          https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys
+    
+    
