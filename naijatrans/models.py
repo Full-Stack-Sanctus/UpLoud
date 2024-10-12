@@ -1,15 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
 from django.conf import settings
 
 
-class UserLogin(AbstractUser):  # Inherit from AbstractUser
+class UserLogin(AbstractBaseUser):  # Inherit from AbstractUser
     email = models.EmailField(unique=True)  # Ensure email is unique
     password = models.CharField(max_length=128)
     
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = BaseUserManager()  # This line is necessary
+    
+    USERNAME_FIELD = 'email'  # Use email as the username field
+    REQUIRED_FIELDS = []  # Add any additional required fields
+    
+    
+    
     class Meta:
         db_table = 'naijatrans_userlogin'  # Specify your custom table name
+        
+        
+    
         
 
 class Vehicle(models.Model):
