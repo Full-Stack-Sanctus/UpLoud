@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-q&3j9a4q6%!u-*!3ursgx-q$qax)2eu*om-+92@svm13*#x*6s'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
