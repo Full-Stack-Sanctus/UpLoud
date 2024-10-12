@@ -57,7 +57,7 @@ def login(request):
             # Return error response for invalid credentials
             return Response({'non_field_errors': ['Invalid email or password.']}, status=status.HTTP_400_BAD_REQUEST)
     
-        :
+        
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
