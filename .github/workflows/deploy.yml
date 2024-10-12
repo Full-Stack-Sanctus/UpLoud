@@ -27,7 +27,8 @@ jobs:
         run: |
           python manage.py makemigrations --noinput
           python manage.py migrate --noinput
-
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Ensure this is set in your GitHub 
 
       - name: Deploy to Render
         run: |
@@ -41,5 +42,6 @@ jobs:
             }
           }' \
           https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys
+    
     
     
