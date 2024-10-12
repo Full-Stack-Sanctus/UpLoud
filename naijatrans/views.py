@@ -28,22 +28,29 @@ def register(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 @api_view(['POST'])
 def login(request):
+    # Authenticate the user
     
     print("Incoming data:", request.data)  # Debugging line
+  
    
-    serializer = LoginSerializer(data=request.data)
-    if not serializer.is_valid():
-        user = serializer.validated_data
+    user = authenticate(request, username=request.data['email'], password=request.data['password'])
+    if user is not None:
+        # Ensure `user` is a User instance before generating the token
         refresh = RefreshToken.for_user(user)
         return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         })
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    print(serializer.errors)
+
+
+
 
 @api_view(['GET'])
 def profile(request):
