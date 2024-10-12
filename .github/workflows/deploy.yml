@@ -28,9 +28,9 @@ jobs:
         python manage.py makemigrations
         python manage.py migrate
       env:
-        DATABASE_URL: ${{ EMPIRE_RENDER.DATABASE_URL }}  # Ensure this is set in your GitHub Secrets
+        DATABASE_URL: ${{ secrets.EMPIRE_RENDER_DB_URL }}  # Ensure this is set in your GitHub Secrets
 
     - name: Deploy to Render
       run: |
-        curl -X POST -H "Authorization: Bearer ${{ EMPIRE_RENDER.RENDER_API_KEY }}" \
+        curl -X POST -H "Authorization: Bearer ${{ secrets.EMPIRE_RENDER_API}}" \
         "https://api.render.com/v1/services/srv-cs33nvt6l47c73e925s0/deploys"  # Replace with your service ID
