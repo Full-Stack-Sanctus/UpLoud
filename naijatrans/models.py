@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
 
 class UserLogin(AbstractUser):  # Inherit from AbstractUser
     email = models.EmailField(unique=True)  # Ensure email is unique
