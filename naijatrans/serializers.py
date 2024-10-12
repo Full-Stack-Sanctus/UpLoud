@@ -28,21 +28,21 @@ class RegisterSerializer(serializers.ModelSerializer):
 # Serializer for login
 
 
-
-
 class LoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField(write_only=True)
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(write_only=True, required=True)
 
     def validate(self, data):
         email = data.get('email')
         password = data.get('password')
 
-        # Use 'username=email' to allow authenticate to check the custom backend
-        user = authenticate(username=email, password=password)  
-        
+        if not email or not password:
+            raise serializers.ValidationError("Email and password are required.")
+
+        # Authenticate the user using email as the username
+        user = authenticate(username=email, password=password)
         if user is None:
             raise serializers.ValidationError("Invalid email or password.")
-        
-        return user
-        
+
+        # Return the user instance, not a dictionary
+        return user  # Ensure this returns the user instance

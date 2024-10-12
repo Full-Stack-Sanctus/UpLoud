@@ -118,3 +118,6 @@ AUTHENTICATION_BACKENDS = [
     'naijatrans.EmailAuth.EmailAuthBackend',  # Custom email backend
     'django.contrib.auth.backends.ModelBackend',  # Default backend
 ]
+
+
+AUTH_USER_MODEL = 'naijatrans.UserLogin'  # Assuming your app is named naijatrans
