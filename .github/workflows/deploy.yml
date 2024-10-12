@@ -29,7 +29,13 @@ jobs:
           python manage.py migrate --noinput
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Ensure this is set in your GitHub 
-
+          
+          DB_NAME: ${{ secrets.DB_NAME }}  # Ensure this is set in your GitHub 
+          DB_USER: ${{ secrets.DB_USER }}  # Ensure this is set in your GitHub 
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}  # Ensure this is set in your GitHub 
+          DB_HOST: ${{ secrets.DB_HOST }}  # Ensure this is set in your GitHub 
+          
+          
       - name: Deploy to Render
         run: |
           curl -X POST \
