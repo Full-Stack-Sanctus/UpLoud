@@ -1,5 +1,7 @@
 from naijatrans.models import UserLogin  # Adjust based on your project structure
 
+from django.contrib.auth import get_user_model
+
 class EmailAuthBackend:
     """Authenticate using an email address."""
     
@@ -14,7 +16,9 @@ class EmailAuthBackend:
             return None
 
     def get_user(self, user_id):
+        User = get_user_model()
         try:
-            return UserLogin.objects.get(pk=user_id)  # Use your custom model
-        except UserLogin.DoesNotExist:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
             return None
+
