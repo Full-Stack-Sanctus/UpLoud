@@ -39,17 +39,26 @@ def login(request):
     
     print("Incoming data:", request.data)  # Debugging line
   
-   
-    user = authenticate(request, username=request.data['email'], password=request.data['password'])
-    if user is not None:
-        # Ensure `user` is a User instance before generating the token
-        refresh = RefreshToken.for_user(user)
-        return Response({
-            'refresh': str(refresh),
+    if serializer.is_valid():  # Check if the data is valid
+        email = serializer.validated_data['email']  # Access validated data
+        password = serializer.validated_data['password']
+
+        user = authenticate(request, username=request.data['email'], password=request.data['password'])
+        
+        
+        if user:  # If user is authenticated
+            # Here, generate and return the token or user info
+            return Response({'refresh': str(refresh),
             'access': str(refresh.access_token),
-        })
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            'success': 'Logged in successfully'}, status=status.HTTP_200_OK)
+            
+        else:
+            
+            # Return error response for invalid credentials
+            return Response({'non_field_errors': ['Invalid email or password.']}, status=status.HTTP_400_BAD_REQUEST)
+    
+        :
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
 
