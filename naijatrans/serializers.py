@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from django.contrib.auth import get_user_model
+
+
 # Serializer for user login
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,10 +42,23 @@ class LoginSerializer(serializers.Serializer):
         if not email or not password:
             raise serializers.ValidationError("Email and password are required.")
 
-        # Authenticate the user using email as the username
-        user = authenticate(username=email, password=password)
+        # Authenticate the user using email instead of username
+        try:
+            # Fetch the user by email
+            user = get_user_model().objects.get(email=email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError("User with this email does not exist.")
+
+        # Now authenticate the user by their username (email) and password
+        user = authenticate(username=user.email, password=password)
+        
         if user is None:
             raise serializers.ValidationError("Invalid email or password.")
 
-        # Return the user instance, not a dictionary
-        return user  # Ensure this returns the user instance
+        # Return the user instance (or tokens if needed)
+        return {
+            'email': email,
+            'password': password,
+            'refresh_token': str(RefreshToken.for_user(user)),
+            'access_token': str(RefreshToken.for_user(user).access_token)
+        }
