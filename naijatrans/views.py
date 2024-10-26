@@ -51,8 +51,9 @@ def login(request):
     serializer = LoginSerializer(data=request.data)
     
     if serializer.is_valid():
-        email = serializer.validated_data['email']  # Extract validated email
-        password = serializer.validated_data['password']
+        user_data = serializer.validated_data  # Access validated data dictionary
+        email = user_data['email']  # Extract validated email
+        password = user_data['password']
         
         # Use the email for authentication
         user = authenticate(request, username=email, password=password)
